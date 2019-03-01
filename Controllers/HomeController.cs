@@ -11,11 +11,12 @@ namespace BethanysPieShop.Controllers
 {
     public class HomeController : Controller //HomeController is a class that inherits from the base Controller class
     {
-        private readonly IPieRepository _pieRepository;
+        private Func<IPieRepository> _pieRepository;
+        private IPieRepository PieRepository => _pieRepository();
 
         // in the constructor we initialize the pieReposirtory in this way -  _pieRepository = new MockPieRepository(); - if we don't have a dependency injection
         // the dependency injection will automatically inject an instance of the MockPieRepository here --> CONSTRUCTOR INJECTION
-        public HomeController(IPieRepository pieRepository) 
+        public HomeController(Func<IPieRepository> pieRepository) 
         {
             _pieRepository = pieRepository;
         }
@@ -26,7 +27,7 @@ namespace BethanysPieShop.Controllers
 
             //I want to retrieve all the pies to build up that list of pies; I do that by using the injected instance of the pieRepository
             //I am going to call the GetAllPies method and I want them to be ordered by name
-            var pies = _pieRepository.GetAllPies().OrderBy(p => p.Name);
+            var pies = PieRepository.GetAllPies().OrderBy(p => p.Name);
             //This list of pay that is currently an IOrderedEnumerable is then going to be passed to the View method
             return View(pies);
         }
