@@ -27,15 +27,15 @@ namespace BethanysPieShop.Controllers
         public IActionResult Index()
         {
             //ViewBag.Title = "Pie Overview"; // ViewBag is dynamic so I can add any property I want;
-
             //I want to retrieve all the pies to build up that list of pies; I do that by using the injected instance of the pieRepository
             //I am going to call the GetAllPies method and I want them to be ordered by name
             var pies = PieRepository.GetAllPies().OrderBy(p => p.Name);
+
             //This list of pay that is currently an IOrderedEnumerable is then going to be passed to the View method
             var homeViewModel = new HomeViewModel()
             {
-                Title = "Welcome to Bethany's Pie Shop",
-                Pies = pies.ToList()
+                Pies = pies.ToList(),
+                Title = "Welcome to Bethany's Pie Shop"
             };
             return View(homeViewModel);
         }
