@@ -27,8 +27,13 @@ namespace BethanysPieShop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //we need a connection string to connect with the actual database;
+            //we need a connection string to connect with the actual database;
             // I can use the configuration instance to ask for a conncetion string
+            services.AddDbContext<AppDbContext>(
+                optionsAction: options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),
+                contextLifetime: ServiceLifetime.Transient,
+                optionsLifetime: ServiceLifetime.Transient
+            ); 
 
             //services.AddTransientWithResolver<IPieRepository, MockPieRepository>();//if someone is asking for an IPieRepository, a new MockPieRepository will be returned
             services.AddTransientWithResolver<IPieRepository, PieRepository>();
