@@ -8,7 +8,7 @@ namespace BethanysPieShop.Models
 {
     public class PieRepository : IPieRepository
     {
-        private readonly AppDbContext _appDbContext; // access to my Add DbContext via a constructor injection
+        private readonly AppDbContext _appDbContext; // access to my AddDbContext via a constructor injection
 
         public PieRepository(AppDbContext appDbContext) //here I pass in an appDbContext and I'll make the local instance equal to the passed-in instance
         {
@@ -18,7 +18,7 @@ namespace BethanysPieShop.Models
         public IEnumerable<Pie> GetAllPies()
         {
            return _appDbContext.Pies; //I use my DbContext to return all the pies from the context; 
-            //this will check if the pies collection on the context has already been populated; if not, it will load the data from the underlying database;
+            //this will check if the pies collection on the context has already been populated; if not, it will load in the data from the underlying database;
         }
 
         public Pie GetPieById(int pieId)
