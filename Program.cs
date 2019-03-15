@@ -32,7 +32,10 @@ namespace BethanysPieShop
                 {
                     //we could log this in a real-world situation
                 }
+                         
             }
+
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
