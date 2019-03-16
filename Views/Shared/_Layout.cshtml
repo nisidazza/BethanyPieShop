@@ -8,6 +8,16 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <!--HTML5 NEF element that contains an ul for all the links in the navigation bar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-controller="Home" asp-action="Index" class="navbar-brand">Bethany's Pie Shop</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container body-content">
         <!--This is going to enable Bootstrap using the class container -->
         <div class=" row">
