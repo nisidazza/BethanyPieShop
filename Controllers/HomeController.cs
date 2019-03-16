@@ -19,7 +19,7 @@ namespace BethanysPieShop.Controllers
 
         // in the constructor we initialize the pieReposirtory in this way -  _pieRepository = new MockPieRepository(); - if we don't have a dependency injection
         // the dependency injection will automatically inject an instance of the MockPieRepository here --> CONSTRUCTOR INJECTION
-        public HomeController(Func<IPieRepository> pieRepository) 
+        public HomeController(Func<IPieRepository> pieRepository)
         {
             _pieRepository = pieRepository;
         }
@@ -40,5 +40,15 @@ namespace BethanysPieShop.Controllers
             };
             return View(homeViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var pie = PieRepository.GetPieById(id);// I use my PieRepository to check if I can find my pie
+            if (pie == null)
+                return NotFound(); // if not I ma going to return a 404 not found 
+
+            return View(pie);
+        }
     }
 }
+
