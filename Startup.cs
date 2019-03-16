@@ -39,6 +39,7 @@ namespace BethanysPieShop
             services.AddTransientWithResolver<IPieRepository, PieRepository>();
             //services.AddSingleton<>(); only one single instance is going to be created of the specified type, and only the same instance is going to be returned
             //services.AddScoped<>(); //per request it will always return the sae instance, but as soon as the request goes out of scope, the instance is removed
+            services.AddTransient<IFeedbackRepository, FeedbackRepository>();
             services.AddMvc(); //in this way we enable MVC for this application
             
         }

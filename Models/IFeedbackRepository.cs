@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShop.Models
 {
-    interface IFeedbackRepository // this method allows us to add feedback
+    public interface IFeedbackRepository // this method allows us to add feedback
     {
         void AddFeedback(Feedback feedback);
     }
