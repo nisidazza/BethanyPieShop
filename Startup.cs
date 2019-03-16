@@ -49,8 +49,17 @@ namespace BethanysPieShop
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            //app.UseMvcWithDefaultRoute(); I am going to replace this with app.UseMvc() and passing to this one my route ;
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
 
-            app.UseMvcWithDefaultRoute();
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}"//this template is going to be use to match incoming request with this pattern
+                    );
+            }
+            );
+            
         }
     }
 }
