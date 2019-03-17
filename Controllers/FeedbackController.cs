@@ -28,8 +28,12 @@ namespace BethanysPieShop.Controllers
         [HttpPost]
         public IActionResult Index(Feedback feedback)
         {
-            _feedbackRepository.AddFeedback(feedback); //pass this feedback into the feedbackRepository
-            return RedirectToAction("FeedbackComplete"); // I redirect the user to another action method - FeedbackComplete - that I have to create
+            if (ModelState.IsValid)
+            {
+                _feedbackRepository.AddFeedback(feedback); //pass this feedback into the feedbackRepository
+                return RedirectToAction("FeedbackComplete"); // I redirect the user to another action method - FeedbackComplete - that I have to create
+            }
+            return View(feedback); //redirect the user to the same page and pass the same data; user is going to see the page with a validation error (implemented in the view folder in order to be displayed)
         }
 
         public IActionResult FeedbackComplete()
