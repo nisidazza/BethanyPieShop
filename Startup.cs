@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 namespace BethanysPieShop
 {
@@ -33,7 +34,10 @@ namespace BethanysPieShop
                 optionsAction: options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),
                 contextLifetime: ServiceLifetime.Transient,
                 optionsLifetime: ServiceLifetime.Transient
-            ); 
+            );
+            //Add the default identity ssytem configuration
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>(); //this service should use my AppDbContext to store the info
 
             //services.AddTransientWithResolver<IPieRepository, MockPieRepository>();//if someone is asking for an IPieRepository, a new MockPieRepository will be returned
             services.AddTransientWithResolver<IPieRepository, PieRepository>();

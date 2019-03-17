@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore; // we need to add this in order to inherit 
 
 namespace BethanysPieShop.Models
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<>
     {
         public AppDbContext(DbContextOptions<AppDbContext>options) : base (options) // we pass DbContext Options through a Constructor
         {
