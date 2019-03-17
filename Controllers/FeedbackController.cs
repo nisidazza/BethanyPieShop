@@ -29,7 +29,7 @@ namespace BethanysPieShop.Controllers
         public IActionResult Index(Feedback feedback)
         {
             _feedbackRepository.AddFeedback(feedback); //pass this feedback into the feedbackRepository
-            return RedirectToAction("FeedbackCompete"); // I redirect the user to another action method - FeedbackComplete - that I have to create
+            return RedirectToAction("FeedbackComplete"); // I redirect the user to another action method - FeedbackComplete - that I have to create
         }
 
         public IActionResult FeedbackComplete()
