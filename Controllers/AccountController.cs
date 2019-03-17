@@ -23,7 +23,7 @@ namespace BethanysPieShop.Controllers
         }
 
         // GET: /<controller>/
-        //my AccountContrell will need to able to log in, so I replace the Index Method with Login;
+        //my AccountController will need to able to log in, so I replace the Index Method with Login;
         public IActionResult Login()
         {
             return View();
