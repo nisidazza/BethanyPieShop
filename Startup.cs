@@ -55,6 +55,8 @@ namespace BethanysPieShop
             app.UseStatusCodePages();
             app.UseStaticFiles();
             //app.UseMvcWithDefaultRoute(); I am going to replace this with app.UseMvc() and passing to this one my route ;
+
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
