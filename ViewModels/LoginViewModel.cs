@@ -10,12 +10,10 @@ namespace BethanysPieShop.ViewModels
     {
         [Required]
         [Display(Name = "User Name")] //the display attribute will override that in the UI, user name without a space will be shown, this value instead will be shown
-
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-
         public string Password { get; set; }
     }
 }
