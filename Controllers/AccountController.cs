@@ -71,6 +71,13 @@ namespace BethanysPieShop.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
             return View(loginViewModel);
         }
