@@ -19,8 +19,6 @@ namespace BethanysPieShop.Controllers
             _userManager = userManager;
         }
 
-        public object ModelState { get; private set; }
-
         // GET: /<controller>/
         //my AccountController will need to able to log in, so I replace the Index Method with Login;
         public IActionResult Login()
