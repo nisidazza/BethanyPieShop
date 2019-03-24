@@ -18,6 +18,7 @@ namespace BethanysPieShop.ViewModels
 
         [DataType("Password")]
         [Compare("Password", ErrorMessage = "Password and Confirmation Password must match.")]
+        [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; }
     }
 }
