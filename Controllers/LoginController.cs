@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShop.Controllers
 {
-    public class AccountLoginController : Controller
+    public class LoginController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public AccountLoginController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public LoginController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -21,7 +21,7 @@ namespace BethanysPieShop.Controllers
 
         // GET: /<controller>/
         //my AccountController will need to able to log in, so I replace the Index Method with Login;
-        public IActionResult Login()
+        public IActionResult Index()
         {
             return View();
         }
@@ -30,18 +30,18 @@ namespace BethanysPieShop.Controllers
         //I need to create a second Action method when a Post request is sent to the Controller
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
+        public async Task<IActionResult> Index(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(loginViewModel);
             }
 
-            var user = await _userManager.FindByNameAsync(loginViewModel.LoginUserName);
+            var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
 
             if (user != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.LoginPassword, false, false);
+                var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");

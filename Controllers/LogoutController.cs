@@ -10,13 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BethanysPieShop.Controllers
 {
-    public class AccountLogoutController : Controller
+    public class LogoutController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         // Here I need an instance of these methods and I am going to use the dependency injection
 
-        public AccountLogoutController(SignInManager<IdentityUser> signInManager, 
+        public LogoutController(SignInManager<IdentityUser> signInManager, 
             UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;

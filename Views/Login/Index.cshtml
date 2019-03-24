@@ -2,25 +2,25 @@
 <!--I don't have a domain class that can be used for this so we have to create a login view model -->
 @model LoginViewModel
 
-<h2>Before contacting us, please log in or <a asp-action="Register" asp-controller="Account">register!</a></h2>
+<h2>Before contacting us, please log in or <a asp-action="Index" asp-controller="Login">register!</a></h2>
 
-<form asp-action="Login" asp-controller="AccountLogin" method="post" class="form-horizontal" role="form">
+<form asp-action="Index" asp-controller="Login" method="post" class="form-horizontal" role="form">
 
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="LoginUserName" class="col-md-2 control-label"></label>
+        <label asp-for="UserName" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="LoginUserName" class="form-control" />
-            <span asp-validation-for="LoginUserName" class="text-danger"></span>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
         </div>
     </div>
 
     <div class="form-group">
-        <label asp-for="LoginPassword" class="col-md-2 control-label"></label>
+        <label asp-for="Password" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="LoginPassword" class="form-control" />
-            <span asp-validation-for="LoginPassword" class="text-danger"></span>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
         </div>
     </div>
 
