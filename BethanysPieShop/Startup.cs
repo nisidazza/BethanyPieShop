@@ -38,6 +38,8 @@ namespace BethanysPieShop
             //Add the default identity ssytem configuration
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>(); //this service should use my AppDbContext to store the info
+            
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Login");
 
             //services.AddTransientWithResolver<IPieRepository, MockPieRepository>();//if someone is asking for an IPieRepository, a new MockPieRepository will be returned
             services.AddTransientWithResolver<IPieRepository, PieRepository>();
